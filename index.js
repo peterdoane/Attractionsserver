@@ -13,8 +13,8 @@ var app = express();
 
 // proxy to yelp to avoid implementing oauth1.0 in react-native app
 app.get('/searchYelp', function(req, res) {
-  console.log("incoming search request");
-  yelp.search({ term: req.query.term, location: req.query.location })
+  console.log("incoming search request", req.query.term, req.query.ll);
+  yelp.search({ term: req.query.term, ll: req.query.ll })
     .then(function (data) {
       console.log("it was successful");
       data
